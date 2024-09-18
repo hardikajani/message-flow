@@ -70,7 +70,7 @@ const SignInPage = () => {
         className: "bg-green-500 text-white"
 
       });
-      router.replace(`/dashbord`)
+      router.replace(`/dashboard`)
       setIsSubmitting(false);
       loginForm.reset();
     }
