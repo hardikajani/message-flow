@@ -38,7 +38,7 @@ export default async function RootLayout({
       >
         <AuthProvider>
         {/* <Navbar /> */}
-          <div className="w-full justify-center bg-[#1f2a38]">
+          <div className="w-full items-center justify-center bg-[#1f2a38]">
             {children}
             <Toaster />
           </div>

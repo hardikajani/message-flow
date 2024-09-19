@@ -39,19 +39,29 @@ const MessageCard = ({message, onMessageDelete}:MessageCardProps) => {
             toast({
                 title: response.data.message,
             })
-            onMessageDelete(message._id)
+            onMessageDelete(message._id as string)
         
     }
+
+    // Format the date
+    const formattedDate = new Date(message.createdAt).toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+    })
+
     return (
-        <Card>
-            <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
+        <Card className="flex flex-row">
+            <CardHeader className="w-full">
+                <CardTitle>{message.content}</CardTitle>
+                <CardDescription>{formattedDate}</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="mt-5">
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
-                        <Button variant="destructive"><X className="w-5 h-5" /></Button>
+                        <Button variant="destructive"><X className="w-3 h-3" /></Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogHeader>

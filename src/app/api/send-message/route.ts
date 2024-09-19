@@ -7,6 +7,7 @@ import { messageSchema } from "@/schemas/messageSchema";
 export async function POST(request:Request) {
     await dbConnect();
     const {username, content} = await request.json();
+    console.log(username, content);
 
     try {
         // Validate the message content using the messageSchema
@@ -16,7 +17,7 @@ export async function POST(request:Request) {
       return Response.json(
         {
         success: false,
-        error: validationResult.error.issues[0].message,
+        message: validationResult.error.issues[0].message,
       },
       { status: 400 }
     );
@@ -27,7 +28,7 @@ export async function POST(request:Request) {
             return Response.json(
                 {
                     success: false,
-                    error:"User not found"
+                    message:"User not found"
                 },
                 {status:404});
         }
@@ -36,7 +37,7 @@ export async function POST(request:Request) {
             return Response.json(
                 {
                     success: false,
-                    error:"User is not accepting messages"
+                    message:"User is not accepting messages"
                 }, 
                 {status:400});
         }
@@ -55,7 +56,7 @@ export async function POST(request:Request) {
         return Response.json(
             {
                 success: false,
-                error:"Error sending message"
+                message:"Error sending message"
             },
             {status:500});
         
