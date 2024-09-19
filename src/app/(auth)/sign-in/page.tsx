@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import * as z from "zod"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -62,28 +62,26 @@ const SignInPage = () => {
         setIsSubmitting(false); 
     }
     if (result?.url) {
-      toast({
-        title: "Success",
-        description: "login successfully",
-        variant: "default",
-        duration: 1000,
-        className: "bg-green-500 text-white"
+      // toast({
+      //   title: "Success",
+      //   description: "login successfully",
+      //   variant: "default",
+      //   duration: 1000,       
 
-      });
+      // });
       router.replace(`/dashboard`)
       setIsSubmitting(false);
-      loginForm.reset();
     }
     
   }
 
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <h1 className="text-3xl font-extrabold tracking-tight lg:text-4xl mb-6">
-            Message~Flow
+          Welcome Back to Message~Flow
           </h1>
           <p className="mb-4">
             Sign in to start your anonymous adventure
